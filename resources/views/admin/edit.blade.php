@@ -1,10 +1,10 @@
-<x-layout>
+<x-adminLayout>
     <div class="min-h-[calc(100vh-80px)] flex items-center justify-center p-4">
         <div class="card w-full max-w-md bg-base-100 shadow-2xl border border-gray-700">
             <div class="card-body">
                 <h2 class="card-title text-2xl font-bold text-primary mb-6">تحديث البيانات</h2>
 
-                <form action="/admin/users/{{ $user->id }}" method="POST" class="space-y-4">
+                <form action="/admin/edit_user/{{ $user->id }}" method="POST" class="space-y-4">
                     @csrf
                     @method('PATCH') 
 
@@ -47,11 +47,11 @@
                     </div>
 
                     <div class="card-actions justify-end mt-6">
-                        <a href="/" type="button" class="btn btn-ghost text-white">cancel</a>
+                        <a href="/admin/users" type="button" class="btn btn-ghost text-white">cancel</a>
                         <button type="submit" class="btn btn-primary px-8 text-white"> save changes </button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
-</x-layout>
+</x-adminLayout>
