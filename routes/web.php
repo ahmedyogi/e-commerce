@@ -12,21 +12,34 @@ use Illuminate\Support\Facades\Route;
 Route::view('/contact', ['contact']);
 Route::view('/login', ['login']);
 Route::view('/signup', ['sign-up']);
-Route::view('/about','aboutus');
-Route::view('/orders','orders');
+Route::view('/about', 'aboutus');
+Route::view('/orders', 'orders');
 
-Route::get('/',function(){
+Route::get('/', function () {
     $product = Product::all();
-    return view('home',['products' => $product]);
+    return view('home', ['products' => $product]);
 });
-Route::get('/products',function(){
+Route::get('/products', function () {
     $products = Product::all();
-    return view('products',['products' => $products]);
+    return view('products', ['products' => $products]);
 });
 
 Route::prefix('/admin')->group(function () {
-    Route::controller(admin::class)->group(function(){
-        Route::view('/home', 'admin.home');
+    Route::controller(admin::class)->group(function () {
+
+        //products routes
+        $products = Product::all();
+        $usersCount = User::count();
+        $productsCount = Product::count();
+        Route::view('/home', 'admin.home',['productsCount' => $productsCount,'usersCount' => $usersCount]);
+        Route::get('/edit_product/{id}', 'edit_product');
+        Route::patch('/edit_products/{id}', 'update_product');
+        route::view('/products', 'admin.products', ['products' => $products, 'productsCount' => $productsCount]);
+        Route::delete('/products/{id}', 'delete_product')->name('products.destroy');
+        route::view('/create_product', 'admin.create_product');
+        Route::post('/create_product', 'create_product');
+
+        //user routes
         Route::view('/create', 'admin.create');
         Route::post('/create', 'create');
         Route::get('/users', 'index');
@@ -41,7 +54,7 @@ Route::controller(sessionController::class)->group(function () {
 
     Route::post('/signup', 'store');
     Route::post('/login', 'login')->name('login');
-    Route::get('users/{id}', 'edit')->middleware('auth','verified');
+    Route::get('users/{id}', 'edit')->middleware('auth', 'verified');
     Route::patch('users/{id}', 'update');
     Route::delete('/logout', 'destroy');
 });

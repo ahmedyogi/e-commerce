@@ -56,20 +56,7 @@
                         </li>
                         <!-- List item -->
                         <li>
-                            <a href="/admin/orders" class="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="orders">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linejoin="round"
-                                    stroke-linecap="round" stroke-width="2" fill="none" stroke="currentColor"
-                                    class="my-1.5 inline-block size-4">
-                                    <circle cx="9" cy="21" r="1"></circle>
-                                    <circle cx="20" cy="21" r="1"></circle>
-                                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                                </svg>
-                                <span class="is-drawer-close:hidden">orders</span>
-                            </a>
-                        </li>
-                        <!-- List item -->
-                        <li>
-                            <a href =" /admin/peoducts " class="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                            <a href =" /admin/products " class="is-drawer-close:tooltip is-drawer-close:tooltip-right"
                                 data-tip="Products">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linejoin="round"
                                     stroke-linecap="round" stroke-width="2" fill="none" stroke="currentColor"
