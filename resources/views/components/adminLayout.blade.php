@@ -54,6 +54,7 @@
                                 <span class="is-drawer-close:hidden">Homepage</span>
                             </a>
                         </li>
+                        </li>
                         <!-- List item -->
                         <li>
                             <a href =" /admin/products " class="is-drawer-close:tooltip is-drawer-close:tooltip-right"

@@ -12,6 +12,20 @@ use TijsVerkoyen\CssToInlineStyles\Css\Rule\Rule;
 
 class admin extends Controller
 {
+    public function home()
+    {
+        return view('admin.home', [
+            'productsCount' => Product::count(),
+            'usersCount' => User::count()
+        ]);
+    }
+    public function productsIndex()
+    {
+        return view('admin.products', [
+            'products' => Product::all(),
+            'productsCount' => Product::count()
+        ]);
+    }
 
     //user functions
     function create()

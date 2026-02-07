@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -10,6 +11,18 @@ use Illuminate\Validation\Rules\Password;
 
 class sessionController extends Controller
 {
+    function home()
+    {
+        $product = Product::all();
+        return view('home', ['products' => $product]);
+    }
+
+    function showProducts()
+    {
+        $products = Product::all();
+        return view('products', ['products' => $products]);
+    }
+
     function store()
     {
         $validated = request()->validate([
@@ -47,8 +60,8 @@ class sessionController extends Controller
     {
         // $userAuth = Auth::user();
         if (Auth::id() != $id) {
-    abort(404);
-}
+            abort(404);
+        }
         $user = User::findOrFail($id);
         return view('edit', compact('user'));
     }
